@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Senha Segura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Senha Segura</h1>
+            <p class="text-lg text-gray-600"> Melhore a força das suas senha <BR> Dificulte a vida do hacker 🔐</p>
+        </header>
+
+        <main class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden p-8">
+            <div class="mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <label for="password-length" class="block text-sm font-medium text-gray-700">Quantidade de caracteres</label>
+                    <span id="length-value" class="text-sm font-semibold text-indigo-600">12</span>
+                </div>
+                <input type="range" id="length" min="8" max="32" value="12"
+                       class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+            </div>
+
+            <div class="mb-6">
+                <div class="flex items-center mb-4">
+                    <input type="checkbox" id="uppercase" checked class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounde charset-option">
+                    <label for="uppercase" class="ml-2 block text-sm text-gray-700">Incluir Letras Maiúsculas (A-Z)</label>
+                </div>
+                <div class="flex items-center mb-4">
+                    <input type="checkbox" id="lowercase" checked class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded charset-option">
+                    <label for="lowercase" class="ml-2 block text-sm text-gray-700">Incluir Letrar Minúsculas (a-z)</label>
+                </div>
+                <div class="flex items-center mb-4">
+                    <input type="checkbox" id="numbers" checked class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded charset-option">
+                    <label for="numbers" class="ml-2 block text-sm text-gray-700">Incluir Números (0-9)</label>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" id="symbols" checked class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded charset-option">
+                    <label for="symbols" class="ml-2 block text-sm text-gray-700">Icluir Síbolos (!@#$%^&*)</label>
+                </div>
+            </div>
+
+            <div>
+                 <h2 class="text-xl font-semibold text-gray-800 mb-4">ATENÇÂO</h2>
+                 <p class="text-gray-600 mb-6">As senhas geradas NÂO são armazenadas, quando você recarregar a página ou gerar outra senha a antiga se perderá</p>
+                 <p class="text-gray-600 mb-6">Salve-a em um lugar seguro para não se esquecer</p>
+            </div>
+
+            <div class="mb-6">
+                <div class="relative">
+                    <input type="text" id="generated-password" readonly 
+                           class="w-full px-4 py-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button id="copy-btn" class="absolute right-2 top-2 p-1 rounded-md hover:bg-gray-100">
+                        <i data-feather="copy" class="text-gray-500"></i>
+                    </button>
+                    <p id="msg"></p>
+                </div>
+            </div>
+
+            <button id="generate-btn" onclick="init()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200">
+                Gere sua senha
+            </button>
+        </main>
+
+        <section class="max-w-2xl mx-auto mt-12 bg-white rounded-xl shadow-md overflow-hidden p-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Teste a força da sua senha</h2>
+            <p class="text-gray-600 mb-6">Antes de utilizar as senhas, gere de 3 a 5 senhas e teste a força das senhas com as seguintes ferramentas.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="https://www.security.org/how-secure-is-my-password/" target="_blank" rel="noopener noreferrer" 
+                   class="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                    <div class="text-center">
+                        <i data-feather="shield" class="w-6 h-6 mx-auto text-indigo-600 mb-2"></i>
+                        <span class="text-sm font-medium">Security.org</span>
+                    </div>
+                </a>
+                
+                <a href="https://nordpass.com/secure-password/" target="_blank" rel="noopener noreferrer" 
+                   class="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                    <div class="text-center">
+                        <i data-feather="lock" class="w-6 h-6 mx-auto text-indigo-600 mb-2"></i>
+                        <span class="text-sm font-medium">NordPass</span>
+                    </div>
+                </a>
+                
+                <a href="https://bitwarden.com/password-strength/" target="_blank" rel="noopener noreferrer" 
+                   class="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                    <div class="text-center">
+                        <i data-feather="key" class="w-6 h-6 mx-auto text-indigo-600 mb-2"></i>
+                        <span class="text-sm font-medium">Bitwarden</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer class="mt-16 text-center text-gray-500 text-sm">
+            <p>SenhaSegura</p>
+            <p class="mt-1">Criado para deixar a internet um lugar mais seguro</p>
+        </footer>
+    </div>
+
+    <script src="secure.js"></script>
+    <script>
+        feather.replace()
+    </script>
+</body>
+</html>
