@@ -11,7 +11,7 @@ const btnCopy = document.getElementById('copy-btn')
 
 
 let pool = "";
-let uppercase = "ABCDEFGHIJKLMNOPQ";
+let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let lowercase = uppercase.toLowerCase();
 let numbers = "0123456789";
 let symbols = "!@#$%&*()_-+=/"
