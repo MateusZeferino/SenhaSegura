@@ -80,20 +80,32 @@ function generateToken(length) {
 }
 
 function init(){
+    handleChangeIconCopy();
     generateToken(lengthId.value)
 }
 
+function handleChangeIconCheck(){
+    const icon = document.getElementById('iconCopy');
+    icon.classList.remove('fi', 'fi-rs-copy');
+    icon.classList.add('fi', 'fi-br-check');
+}
+
+function handleChangeIconCopy(){
+    const icon = document.getElementById('iconCopy');
+    icon.classList.remove('fi', 'fi-br-check');
+    icon.classList.add('fi', 'fi-rs-copy');
+}
+
 btnCopy.addEventListener('click', async () => {
-    const msg = document.getElementById('msg');
     const text = generated.value
+    
     // Tentativa usando a API moderna
     if (navigator.clipboard && navigator.clipboard.writeText) {
         try {
         await navigator.clipboard.writeText(text);
-        msg.textContent = 'Copiado pro clipboard!';
+        handleChangeIconCheck();
         } catch (err) {
         console.error('Erro ao copiar:', err);
-        msg.textContent = 'Não deu pra copiar 😢';
         }
     } else {
         // Fallback para navegadores antigos
@@ -102,9 +114,9 @@ btnCopy.addEventListener('click', async () => {
         const ok = document.execCommand('copy');
 
         if (ok) {
-        msg.textContent = 'Copiado pro clipboard!';
+            handleChangeIconCheck();
         } else {
-        msg.textContent = 'Não deu pra copiar 😢';
+            handleChangeIconCheck();
         }
 
         // tira seleção

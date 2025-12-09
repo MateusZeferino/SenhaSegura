@@ -7,7 +7,8 @@
     <title>Senha Segura</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-straight/css/uicons-regular-straight.css'>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-100 min-h-screen">
@@ -57,9 +58,8 @@
                     <input type="text" id="generated-password" readonly 
                            class="w-full px-4 py-3 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                     <button id="copy-btn" class="absolute right-2 top-2 p-1 rounded-md hover:bg-gray-100">
-                        <i data-feather="copy" class="text-gray-500"></i>
+                       <i class="fi fi-rs-copy" id="iconCopy"></i>
                     </button>
-                    <p id="msg"></p>
                 </div>
             </div>
 
@@ -106,8 +106,5 @@
     </div>
 
     <script src="secure.js"></script>
-    <script>
-        feather.replace()
-    </script>
 </body>
 </html>
